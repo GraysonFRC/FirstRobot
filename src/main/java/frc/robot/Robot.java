@@ -11,8 +11,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
-
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+import com.fasterxml.jackson.databind.introspect.ClassIntrospector.MixInResolver;
+
 import edu.wpi.first.wpilibj.*;
 
 /**
@@ -23,17 +27,25 @@ import edu.wpi.first.wpilibj.*;
  * directory.
  */
 public class Robot extends TimedRobot {
-  SpeedController m_frontLeft = new PWMVictorSPX(2);
-  SpeedController m_rearLeft = new PWMVictorSPX(3);
+  private final Joystick m_stick = new Joystick(0);
+  SpeedController m_belt = new PWMVictorSPX(4);
+  
+  public JoystickButton button = new JoystickButton(m_stick, 7);
+  SpeedController m_frontLeft = new PWMVictorSPX(0);
+  SpeedController m_rearLeft = new PWMVictorSPX(1);
   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
 
-  SpeedController m_frontRight = new PWMVictorSPX(0);
-  SpeedController m_rearRight = new PWMVictorSPX(1);
+  SpeedController m_frontRight = new PWMVictorSPX(3);
+  SpeedController m_rearRight = new PWMVictorSPX(2);
   SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
   private final DifferentialDrive m_robotDrive
       = new DifferentialDrive(m_left, m_right);
-  private final Joystick m_stick = new Joystick(0);
   private final Timer m_timer = new Timer();
+  {
+  
+    
+      
+    }
   
 
   /**
@@ -80,6 +92,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getZ());
+    
+
   }
   /**
    * This function is called periodically during test mode.
