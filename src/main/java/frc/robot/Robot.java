@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.*;
  */
 public class Robot extends TimedRobot {
   private final Joystick m_stick = new Joystick(0);
-  SpeedController m_belt = new PWMVictorSPX(4);
+  SpeedController m_belt1 = new PWMVictorSPX(4);
   
   public JoystickButton button = new JoystickButton(m_stick, 7);
   SpeedController m_frontLeft = new PWMVictorSPX(0);
