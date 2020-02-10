@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.*;
  * 
  */
 public class Robot extends TimedRobot {
+  //sets up joystick and drive and motor controllers.
   private final Joystick m_stick = new Joystick(0);
   SpeedController m_belt = new PWMVictorSPX(4);
   
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
   SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
   private final DifferentialDrive m_robotDrive
       = new DifferentialDrive(m_left, m_right);
+  //sets up timer
   private final Timer m_timer = new Timer();
   {
   
