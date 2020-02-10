@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
   private final Joystick m_stick = new Joystick(0);
   SpeedController m_belt = new PWMVictorSPX(4);
   
-  public JoystickButton button = new JoystickButton(m_stick, 7);
+  public JoystickButton button = new JoystickButton(m_stick, 6);
   SpeedController m_frontLeft = new PWMVictorSPX(0);
   SpeedController m_rearLeft = new PWMVictorSPX(1);
   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
