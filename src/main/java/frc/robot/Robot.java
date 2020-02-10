@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.*;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the manifest file in the resource
  * directory.
+ * 
  */
 public class Robot extends TimedRobot {
   private final Joystick m_stick = new Joystick(0);
