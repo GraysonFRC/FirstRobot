@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class revShooter extends CommandBase {
   /**
-   * Creates a new revShooter.
+   * Creates a new revShooter.  
    */
   public revShooter() {
     // Use addRequirements() here to declare subsystem dependencies.
