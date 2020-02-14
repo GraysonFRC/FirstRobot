@@ -30,10 +30,9 @@ import edu.wpi.first.wpilibj.*;
  */
 public class Robot extends TimedRobot {
   //sets up joystick and drive and motor controllers.
-  private final Joystick m_stick = new Joystick(0);
+  public static Joystick m_stick = new Joystick(0);
+  public static JoystickButton button = new JoystickButton(m_stick, 7);
   public static SpeedController m_belt = new PWMVictorSPX(4);
-  
-  public JoystickButton button = new JoystickButton(m_stick, 7);
   SpeedController m_frontLeft = new PWMVictorSPX(0);
   SpeedController m_rearLeft = new PWMVictorSPX(1);
   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
@@ -45,7 +44,7 @@ public class Robot extends TimedRobot {
       = new DifferentialDrive(m_left, m_right);
   //sets up timer
   private final Timer m_timer = new Timer();
-  Public Robot(){
+  public Robot(){
     button.whileHeld(new revShooter());
   }
   {

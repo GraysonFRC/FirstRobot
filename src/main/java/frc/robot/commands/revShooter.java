@@ -7,14 +7,16 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class revShooter extends CommandBase {
+public class revShooter extends Command {
   /**
    * Creates a new revShooter.  
    */
   public revShooter() {
     // Use addRequirements() here to declare subsystem dependencies.
+
   }
 
   // Called when the command is initially scheduled.
@@ -35,6 +37,6 @@ public class revShooter extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }
