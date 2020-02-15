@@ -8,11 +8,13 @@
 package frc.robot;
 
 
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TeleOpDrive;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -40,7 +42,9 @@ public class RobotContainer {
     configureButtonBindings();
 
     SmartDashboard.putData(pdp);
-    m_DriveSubsystem.drive(Constants.m_stick.getY(), Constants.m_stick.getZ());
+    m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
+    () -> Constants.m_stick.getY(),
+    () -> Constants.m_stick.getZ()));
   }
   
   /**

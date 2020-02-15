@@ -13,7 +13,7 @@ import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
   /**
-   * Creates a new ExampleSubsystem.
+   * Creates a new DriveSubsystem.
    */
   private final DifferentialDrive m_robotDrive;
   public DriveSubsystem() {
