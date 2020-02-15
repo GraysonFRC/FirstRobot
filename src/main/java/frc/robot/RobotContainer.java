@@ -54,7 +54,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() { 
     final JoystickButton A = new JoystickButton(Constants.m_stick, 2);
-    A.whenHeld(new Shooter(m_DriveSubsystem, 1.0));
+    A.whenPressed(new Shooter(m_DriveSubsystem, 1.0));
 
   }
 
