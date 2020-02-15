@@ -7,14 +7,18 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
-public class ExampleSubsystem extends SubsystemBase {
+public class DriveSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  public ExampleSubsystem() {
-
+  public DriveSubsystem() {
+    final DifferentialDrive m_robotDrive
+    = new DifferentialDrive(Constants.m_left,Constants.m_right);
+    m_robotDrive.arcadeDrive(Constants.m_stick.getY(), Constants.m_stick.getZ());
   }
 
   @Override

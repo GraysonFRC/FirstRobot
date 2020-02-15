@@ -23,8 +23,6 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
-  private final DifferentialDrive m_robotDrive
-    = new DifferentialDrive(Constants.m_left,Constants.m_right);
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -99,7 +97,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.arcadeDrive(Constants.m_stick.getY(), Constants.m_stick.getZ());
+    
   }
 
   @Override
