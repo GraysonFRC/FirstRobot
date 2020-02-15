@@ -15,12 +15,13 @@ public class DriveSubsystem extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
+  private final DifferentialDrive m_robotDrive;
   public DriveSubsystem() {
-    final DifferentialDrive m_robotDrive
-    = new DifferentialDrive(Constants.m_left,Constants.m_right);
-    m_robotDrive.arcadeDrive(Constants.m_stick.getY(), Constants.m_stick.getZ());
+    m_robotDrive = new DifferentialDrive(Constants.m_left,Constants.m_right);
   }
-
+  public void drive(double xSpeed, double zRotation){
+    m_robotDrive.arcadeDrive(xSpeed,zRotation);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
