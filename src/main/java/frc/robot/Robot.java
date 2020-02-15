@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2017-2019 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -7,100 +7,107 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.commands.revShooter;
-
-import com.fasterxml.jackson.databind.introspect.ClassIntrospector.MixInResolver;
-
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 /**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- * 
+ * The VM is configured to automatically run this class, and to call the functions corresponding to
+ * each mode, as described in the TimedRobot documentation. If you change the name of this class or
+ * the package after creating this project, you must also update the build.gradle file in the
+ * project.
  */
 public class Robot extends TimedRobot {
-  //sets up joystick and drive and motor controllers.
-  public static Joystick m_stick = new Joystick(0);
-  public static JoystickButton button = new JoystickButton(m_stick, 7);
-  public static SpeedController m_bel2t = new PWMVictorSPX(5);
-  SpeedController m_frontLeft = new PWMVictorSPX(0);
-  SpeedController m_rearLeft = new PWMVictorSPX(1);
-  SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+  private Command m_autonomousCommand;
 
-  SpeedController m_frontRight = new PWMVictorSPX(3);
-  SpeedController m_rearRight = new PWMVictorSPX(2);
-  SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
+  private RobotContainer m_robotContainer;
+
   private final DifferentialDrive m_robotDrive
-      = new DifferentialDrive(m_left, m_right);
-  //sets up timer
-  private final Timer m_timer = new Timer();
-  public Robot(){
-    button.whileHeld(new revShooter());
-  }
-  {
-  
-    
-      
-    }
-  
-
+    = new DifferentialDrive(Constants.m_left,Constants.m_right);
   /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
+   * This function is run when the robot is first started up and should be used for any
+   * initialization code.
    */
   @Override
   public void robotInit() {
+    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+    // autonomous chooser on the dashboard.
+    m_robotContainer = new RobotContainer();
   }
 
+  /**
+   * This function is called every robot packet, no matter the mode. Use this for items like
+   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
+   *
+   * <p>This runs after the mode specific periodic functions, but before
+   * LiveWindow and SmartDashboard integrated updating.
+   */
+  @Override
+  public void robotPeriodic() {
+    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
+    // commands, running already-scheduled commands, removing finished or interrupted commands,
+    // and running subsystem periodic() methods.  This must be called from the robot's periodic
+    // block in order for anything in the Command-based framework to work.
+    CommandScheduler.getInstance().run();
+  }
 
   /**
-   * This function is run once each time the robot enters autonomous mode.
+   * This function is called once each time the robot enters Disabled mode.
+   */
+  @Override
+  public void disabledInit() {
+  }
+
+  @Override
+  public void disabledPeriodic() {
+  }
+
+  /**
+   * This autonomous runs the autonomous command selected by your {@link RobotContainer} class.
    */
   @Override
   public void autonomousInit() {
-    m_timer.reset();
-    m_timer.start();
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+
+    // schedule the autonomous command (example)
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.schedule();
+    }
   }
 
   /**
    * This function is called periodically during autonomous.
-   */ 
-  @Override
-  public void autonomousPeriodic() {
-    // Drive for 2 seconds
-    if (m_timer.get() < 2.0) {
-      m_robotDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
-    } else {
-      m_robotDrive.stopMotor(); // stop robot
-    }
-  }
- 
-  /**
-   * This function is called once each time the robot enters teleoperated mode.
    */
   @Override
+  public void autonomousPeriodic() {
+  }
+
+  @Override
   public void teleopInit() {
+    // This makes sure that the autonomous stops running when
+    // teleop starts running. If you want the autonomous to
+    // continue until interrupted by another command, remove
+    // this line or comment it out.
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.cancel();
+    }
   }
 
   /**
-   * This function is called periodically during teleoperated mode.
+   * This function is called periodically during operator control.
    */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getZ());
-    
-
+    m_robotDrive.arcadeDrive(Constants.m_stick.getY(), Constants.m_stick.getZ());
   }
+
+  @Override
+  public void testInit() {
+  // Cancels all running commands at the start of test mode.
+    CommandScheduler.getInstance().cancelAll();
+  }
+
   /**
    * This function is called periodically during test mode.
    */
@@ -108,5 +115,3 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 }
-
-
