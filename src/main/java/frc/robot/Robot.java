@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
   //sets up joystick and drive and motor controllers.
   public static Joystick m_stick = new Joystick(0);
   public static JoystickButton button = new JoystickButton(m_stick, 7);
-  public static SpeedController m_belt = new PWMVictorSPX(4);
+  public static SpeedController m_bel2t = new PWMVictorSPX(5);
   SpeedController m_frontLeft = new PWMVictorSPX(0);
   SpeedController m_rearLeft = new PWMVictorSPX(1);
   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
