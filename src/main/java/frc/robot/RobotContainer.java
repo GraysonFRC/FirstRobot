@@ -7,13 +7,12 @@
 
 package frc.robot;
 
-
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Shooter;
 import frc.robot.commands.TeleOpDrive;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -53,8 +52,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
-    final JoystickButton D1 = new JoystickButton(Constants.m_stick, 1);
+  private void configureButtonBindings() { 
+    final JoystickButton A = new JoystickButton(Constants.m_stick, 2);
+    A.whenHeld(new Shooter(m_DriveSubsystem, 1.0));
+
   }
 
 
