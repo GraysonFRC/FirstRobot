@@ -18,6 +18,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.MotorSafety;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -31,7 +32,7 @@ public class RobotContainer {
   private final DriveSubsystem m_DriveSubsystem = new DriveSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final PowerDistributionPanel pdp = new PowerDistributionPanel();
-
+  
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -40,12 +41,12 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
+    
     SmartDashboard.putData(pdp);
     m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
     () -> Constants.m_stick.getY(),
     () -> Constants.m_stick.getZ()));
   }
-  
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -54,10 +55,10 @@ public class RobotContainer {
    */
   private void configureButtonBindings() { 
     final JoystickButton A = new JoystickButton(Constants.m_stick, 2);
-    A.whenPressed(new Shooter(m_DriveSubsystem, 1.0));
-
+    Constants.m_shooter.setSafetyEnabled(false);
+    A.whenHeld(new Shooter(m_DriveSubsystem, 1.0));
+    Constants.m_shooter.setSafetyEnabled(true); 
   }
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

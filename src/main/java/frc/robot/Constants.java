@@ -29,5 +29,5 @@ public final class Constants {
     public static final SpeedController m_frontRight = new PWMVictorSPX(3);
     public static final SpeedController m_rearRight = new PWMVictorSPX(2);
     public static final SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
-    public static final SpeedController m_shooter = new PWMVictorSPX(4);
+    public static final PWMVictorSPX m_shooter = new PWMVictorSPX(4);
 }
