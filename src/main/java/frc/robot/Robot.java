@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.commands.revShooter;
 
 import com.fasterxml.jackson.databind.introspect.ClassIntrospector.MixInResolver;
 
@@ -45,7 +44,6 @@ public class Robot extends TimedRobot {
   //sets up timer
   private final Timer m_timer = new Timer();
   public Robot(){
-    button.whileHeld(new revShooter());
   }
   {
   
@@ -97,8 +95,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getZ());
-    
+    m_robotDrive.arcadeDrive((m_stick.getY()*0.7), (m_stick.getZ()*0.7));
+
 
   }
   /**
