@@ -17,12 +17,14 @@ public class Shooter extends CommandBase {
    */
   private final DriveSubsystem drive;
   private final double speed;
+  private final double scooper;
 
 
-  public Shooter(DriveSubsystem drive, double speed) {
+  public Shooter(DriveSubsystem drive, double speed, double scooper) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.drive = drive;
     this.speed = speed;
+    this.scooper = scooper;
 
     addRequirements(drive);
   }
@@ -36,12 +38,14 @@ public class Shooter extends CommandBase {
   @Override
   public void execute() {
     drive.shoot(speed);
+    drive.scooper(scooper);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     drive.shoot(0);
+    drive.scooper(0);
   }
 
   // Returns true when the command should end.

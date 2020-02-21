@@ -44,8 +44,8 @@ public class RobotContainer {
     
     SmartDashboard.putData(pdp);
     m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
-    () -> Constants.m_stick.getY(),
-    () -> Constants.m_stick.getZ()));
+    () -> (Constants.m_stick.getY()*0.7), //remove 0.7 value
+    () -> (Constants.m_stick.getZ()*0.7)));
   }
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
@@ -55,7 +55,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() { 
     final JoystickButton A = new JoystickButton(Constants.m_stick, 2);
-    A.whenHeld(new Shooter(m_DriveSubsystem, 1.0));
+    A.whenHeld(new Shooter(m_DriveSubsystem, 1.0, 0.5));
   }
 
   /**
