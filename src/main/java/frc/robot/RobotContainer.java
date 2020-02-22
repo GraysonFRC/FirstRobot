@@ -41,8 +41,9 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    
     SmartDashboard.putData(pdp);
+    SmartDashboard.putData(Constants.m_left);
+    SmartDashboard.putData(Constants.m_right);
     m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
     () -> (Constants.m_stick.getY()*0.7), //remove 0.7 value
     () -> (Constants.m_stick.getZ()*0.7)));
