@@ -11,18 +11,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import java.util.function.DoubleSupplier;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class Shooter extends CommandBase {
+public class Scooper extends CommandBase {
   /**
    * Creates a new Shooter.
    */
   private final DriveSubsystem drive;
-  private final double speed;
+  private final double scooper;
 
-
-  public Shooter(DriveSubsystem drive, double speed) {
+  public Scooper(DriveSubsystem drive, double scooper) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.drive = drive;
-    this.speed = speed;
+    this.scooper = scooper;
 
     addRequirements(drive);
   }
@@ -35,13 +34,13 @@ public class Shooter extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drive.shoot(speed);
+    drive.scooper(scooper);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drive.shoot(0);
+    drive.scooper(0);
   }
 
   // Returns true when the command should end.

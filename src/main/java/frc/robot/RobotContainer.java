@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Scooper;
 import frc.robot.commands.Shooter;
 import frc.robot.commands.TeleOpDrive;
 import frc.robot.subsystems.DriveSubsystem;
@@ -56,7 +57,9 @@ public class RobotContainer {
    */
   private void configureButtonBindings() { 
     final JoystickButton A = new JoystickButton(Constants.m_stick, 2);
-    A.whenHeld(new Shooter(m_DriveSubsystem, 1.0, 0.5));
+    final JoystickButton B = new JoystickButton(Constants.m_stick, 3);
+    A.whenHeld(new Shooter(m_DriveSubsystem, 1.0));
+    B.whenHeld(new Scooper(m_DriveSubsystem, -0.5));
   }
 
   /**
