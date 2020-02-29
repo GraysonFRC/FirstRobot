@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
+import frc.robot.subsystems.DriveSubsystem;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -33,4 +34,5 @@ public final class Constants {
     public static final SpeedController m_scooper = new PWMVictorSPX(5);
 
     public static final Servo m_aim = new Servo(6);
+    public static final DriveSubsystem drive = new DriveSubsystem();
 }
