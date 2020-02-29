@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -30,8 +29,10 @@ public class DriveSubsystem extends SubsystemBase {
   public void scooper(double scooper){
     Constants.m_scooper.set(scooper);
   }
+  public void aim(double aim){
+    Constants.m_aim.set(aim);
+  }
 
-  
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
