@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -22,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public final class Constants {
     public static final Joystick m_stick = new Joystick(0);
+    public static final Joystick m_stick2 = new Joystick(1);
     public static final SpeedController m_frontLeft = new PWMVictorSPX(0);
     public static final SpeedController m_rearLeft = new PWMVictorSPX(1);
     public static final SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
@@ -31,4 +31,6 @@ public final class Constants {
     public static final SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
     public static final SpeedController m_shooter = new PWMVictorSPX(4);
     public static final SpeedController m_scooper = new PWMVictorSPX(5);
+
+    public static final Servo m_aim = new Servo(6);
 }
