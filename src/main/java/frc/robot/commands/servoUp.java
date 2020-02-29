@@ -14,16 +14,18 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class servoUp extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveSubsystem drive;
+  private final double aim;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public servoUp(DriveSubsystem drive) {
+  public servoUp(DriveSubsystem drive, double aim) {
     this.drive = drive;
+    this.aim = aim;
+
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drive);
   }
@@ -36,6 +38,7 @@ public class servoUp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    drive.aim(aim);
   }
 
   // Called once the command ends or is interrupted.
