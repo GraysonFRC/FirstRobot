@@ -24,7 +24,7 @@ public class shootscoop extends ParallelCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());super();
 
-    addCommands(
+    super(
       new Shooter(drive, speed),
 
       new Scooper(drive, scoop)
