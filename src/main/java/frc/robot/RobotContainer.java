@@ -62,7 +62,7 @@ public class RobotContainer {
     final JoystickButton X = new JoystickButton(Constants.m_stick, 1);
     A.whenHeld(new Shooter(m_DriveSubsystem, 1.0));
     B.whenHeld(new Scooper(m_ScooperSubsystem, -1.0));
-    X.whenHeld(new shootscoop(m_DriveSubsystem,m_ScooperSubsystem, -1.0, 1.0));
+    X.whenHeld(new shootscoop(m_DriveSubsystem,m_ScooperSubsystem, -1.0, 0.5));
   }
 
   /**
