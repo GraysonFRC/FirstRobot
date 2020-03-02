@@ -8,17 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import java.util.function.DoubleSupplier;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ScooperSubsystem;
 
 public class Scooper extends CommandBase {
   /**
    * Creates a new Shooter.
    */
-  private final DriveSubsystem drive;
+  private final ScooperSubsystem drive;
   private final double scooper;
 
-  public Scooper(DriveSubsystem drive, double scooper) {
+  public Scooper(ScooperSubsystem drive, double scooper) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.drive = drive;
     this.scooper = scooper;

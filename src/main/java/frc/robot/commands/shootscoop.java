@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ScooperSubsystem;
 import frc.robot.Constants;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -20,14 +21,14 @@ public class shootscoop extends ParallelCommandGroup {
   /**
    * Creates a new shootscoop.
    */
-  public shootscoop(DriveSubsystem drive, double scoop, double speed) {
+  public shootscoop(DriveSubsystem drive, ScooperSubsystem scoop,double scoops, double speed) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());super();
 
     super(
       new Shooter(drive, speed),
 
-      new Scooper(drive, scoop)
+      new Scooper(scoop, scoops)
 
 
 
