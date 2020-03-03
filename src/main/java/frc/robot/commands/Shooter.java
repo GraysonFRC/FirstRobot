@@ -8,17 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 public class Shooter extends CommandBase {
   /**
    * Creates a new Shooter.
    */
-  private final DriveSubsystem drive;
+  private final ShooterSubsystem drive;
   private final double speed;
 
 
-  public Shooter(DriveSubsystem drive, double speed) {
+  public Shooter(ShooterSubsystem drive, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.drive = drive;
     this.speed = speed;
