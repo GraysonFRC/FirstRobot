@@ -35,5 +35,4 @@ public final class Constants {
 
     public static final Servo m_aim = new Servo(6);
     public static final DriveSubsystem drive = new DriveSubsystem();
-    public static final DoubleSolenoid m_solenoid = new DoubleSolenoid(0, 0);
 }

@@ -24,10 +24,6 @@ public class DriveSubsystem extends SubsystemBase {
     m_robotDrive.arcadeDrive(xSpeed,zRotation);
   }
 
-  public void aim(double aim){
-    Constants.m_aim.set(aim);
-  }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

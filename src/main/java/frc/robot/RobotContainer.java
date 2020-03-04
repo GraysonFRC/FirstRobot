@@ -16,6 +16,7 @@ import frc.robot.commands.Shooter;
 import frc.robot.commands.TeleOpDrive;
 import frc.robot.commands.shootscoop;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ScooperSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -28,6 +29,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+
   private final DriveSubsystem m_DriveSubsystem = new DriveSubsystem();
   private final ScooperSubsystem m_ScooperSubsystem = new ScooperSubsystem();
   private final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
@@ -40,13 +42,11 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-
+    pdp.clearStickyFaults();
     SmartDashboard.putData(pdp);
     SmartDashboard.putData(Constants.m_left);
     SmartDashboard.putData(Constants.m_right);
-    m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
-    () -> (Constants.m_stick.getY()*0.7), //remove 0.7 value
-    () -> (Constants.m_stick.getZ()*0.7)));
+    //m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem, Constants.m_stick.getY(), Constants.m_stick.getZ()));
   }
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
@@ -61,7 +61,7 @@ public class RobotContainer {
 
     A.whenHeld(new Shooter(m_ShooterSubsystem, 1.0));
     B.whenHeld(new Scooper(m_ScooperSubsystem, -1.0));
-    X.whenHeld(new shootscoop(m_ShooterSubsystem, m_ScooperSubsystem, -1.0, 0.5));
+    X.whenHeld(new shootscoop(m_ShooterSubsystem, m_ScooperSubsystem, -1.0, 0.6));
   }
 
   /**
@@ -69,4 +69,9 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
+  public Command getAutonomousCommand() {
+
+    // An ExampleCommand will run in autonomous
+    return null;
+  }
 }

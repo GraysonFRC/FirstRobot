@@ -6,21 +6,21 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class TeleOpDrive extends CommandBase {
   private final DriveSubsystem drive;
-  private final DoubleSupplier xSpeed;
-  private final DoubleSupplier zRotation;
+  private final Double xSpeed;
+  private final Double zRotation;
   
   
   
   /**
    * Creates a new TeleOpDrive.
    */
-  public TeleOpDrive(DriveSubsystem drive, DoubleSupplier xSpeed, DoubleSupplier zRotation) {
+  public TeleOpDrive(DriveSubsystem drive, Double xSpeed, Double zRotation) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.drive = drive;
     this.xSpeed = xSpeed;
@@ -36,7 +36,7 @@ public class TeleOpDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drive.drive(xSpeed.getAsDouble(), zRotation.getAsDouble());
+    drive.drive(xSpeed, zRotation);
   }
 
   // Called once the command ends or is interrupted.
