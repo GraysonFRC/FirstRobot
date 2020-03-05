@@ -41,12 +41,9 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    SmartDashboard.putData(pdp);
-    SmartDashboard.putData(Constants.m_left);
-    SmartDashboard.putData(Constants.m_right);
     m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
-    () -> (Constants.m_stick.getY()*0.7), //remove 0.7 value
-    () -> (Constants.m_stick.getZ()*0.7)));
+    () -> (-Constants.m_stick.getY()* 0.8), //remove 0.7 value
+    () -> (Constants.m_stick.getZ()*0.6)));
   }
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
@@ -58,15 +55,21 @@ public class RobotContainer {
     final JoystickButton A = new JoystickButton(Constants.m_stick, 2);
     final JoystickButton B = new JoystickButton(Constants.m_stick, 3);
     final JoystickButton X = new JoystickButton(Constants.m_stick, 1);
+    final JoystickButton R2 = new JoystickButton(Constants.m_stick, 8);
 
     A.whenHeld(new Shooter(m_ShooterSubsystem, 1.0));
     B.whenHeld(new Scooper(m_ScooperSubsystem, -1.0));
     X.whenHeld(new shootscoop(m_ShooterSubsystem, m_ScooperSubsystem, -1.0, 0.5));
+    R2.whenHeld(new shootscoop(m_ShooterSubsystem, m_ScooperSubsystem, -1.0, 0.5));
   }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
+  public Command getAutonomousCommand() {
+	return null;
+}
 }
