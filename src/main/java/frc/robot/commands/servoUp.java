@@ -1,30 +1,32 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import java.util.function.DoubleSupplier;
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveSubsystem;
 
-public class TeleOpDrive extends CommandBase {
+import frc.robot.subsystems.DriveSubsystem;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
+/**
+ * An example command that uses an example subsystem.
+ */
+public class servoUp extends CommandBase {
   private final DriveSubsystem drive;
-  private final DoubleSupplier xSpeed;
-  private final DoubleSupplier zRotation;
-  
-  
-  
+  private final double aim;
+
   /**
-   * Creates a new TeleOpDrive.
+   * Creates a new ExampleCommand.
+   *
+   * @param subsystem The subsystem used by this command.
    */
-  public TeleOpDrive(DriveSubsystem drive, DoubleSupplier xSpeed, DoubleSupplier zRotation) {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public servoUp(DriveSubsystem drive, double aim) {
     this.drive = drive;
-    this.xSpeed = xSpeed;
-    this.zRotation = zRotation;
+    this.aim = aim;
+
+    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drive);
   }
 
@@ -36,13 +38,12 @@ public class TeleOpDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drive.drive(xSpeed.getAsDouble(), zRotation.getAsDouble());
+    drive.aim(aim);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drive.drive(0, 0);
   }
 
   // Returns true when the command should end.
