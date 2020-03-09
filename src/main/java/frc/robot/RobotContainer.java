@@ -8,13 +8,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.Scooper;
-import frc.robot.commands.Shooter;
-import frc.robot.commands.TeleOpDrive;
-import frc.robot.commands.shootscoop;
+import frc.robot.commands.*;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.ScooperSubsystem;
@@ -54,12 +52,13 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() { 
-    final JoystickButton A = new JoystickButton(Constants.m_stick, 2);
-    final JoystickButton B = new JoystickButton(Constants.m_stick, 3);
-    final JoystickButton X = new JoystickButton(Constants.m_stick, 1);
-    final JoystickButton R2 = new JoystickButton(Constants.m_stick, 8);
+    final JoystickButton A = new JoystickButton(Constants.m_stick2, 2);
+    final JoystickButton B = new JoystickButton(Constants.m_stick2, 3);
+    final JoystickButton X = new JoystickButton(Constants.m_stick2, 1);
+    final JoystickButton R2 = new JoystickButton(Constants.m_stick2, 8);
     final JoystickButton LB = new JoystickButton(Constants.m_stick, 5);
-
+    final JoystickButton LB2 = new JoystickButton(Constants.m_stick2, 5);
+    final JoystickButton LT2 = new JoystickButton(Constants.m_stick2, 7);
     A.whenHeld(new Shooter(m_ShooterSubsystem, 1.0));
     B.whenHeld(new Scooper(m_ScooperSubsystem, -1.0));
     X.whenHeld(new shootscoop(m_ShooterSubsystem, m_ScooperSubsystem, -1.0, 0.5));
@@ -67,9 +66,9 @@ public class RobotContainer {
     LB.whenHeld(new TeleOpDrive(m_DriveSubsystem, 
     () -> (0),
     () -> (0)
-    
-    
     ));
+    LT2.whenPressed(new PneumaticUp(m_PneumaticsSubsystem));
+    LB2.whenPressed(new PneumaticDown(m_PneumaticsSubsystem));
   }
 
 
