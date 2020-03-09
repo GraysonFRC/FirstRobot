@@ -16,6 +16,7 @@ import frc.robot.commands.Shooter;
 import frc.robot.commands.TeleOpDrive;
 import frc.robot.commands.shootscoop;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.ScooperSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -31,6 +32,7 @@ public class RobotContainer {
   private final DriveSubsystem m_DriveSubsystem = new DriveSubsystem();
   private final ScooperSubsystem m_ScooperSubsystem = new ScooperSubsystem();
   private final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
+  private final PneumaticsSubsystem m_PneumaticsSubsystem = new PneumaticsSubsystem();
   private final PowerDistributionPanel pdp = new PowerDistributionPanel();
   
 

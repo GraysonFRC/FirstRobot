@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Constants;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PneumaticsSubsystem extends SubsystemBase {
@@ -16,9 +18,13 @@ public class PneumaticsSubsystem extends SubsystemBase {
   public PneumaticsSubsystem() {
   }
   
-  public void Up(double value){
-    
+  public void Up(){
+    Constants.m_solenoid.set(Value.kForward);
   }
+
+  public void Down(){
+    Constants.m_solenoid.set(Value.kReverse);
+  } 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
