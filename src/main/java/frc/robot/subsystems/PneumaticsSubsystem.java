@@ -25,6 +25,10 @@ public class PneumaticsSubsystem extends SubsystemBase {
   public void Down(){
     Constants.m_solenoid.set(Value.kReverse);
   } 
+
+  public void Off(){
+    Constants.m_solenoid.set(Value.kOff);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

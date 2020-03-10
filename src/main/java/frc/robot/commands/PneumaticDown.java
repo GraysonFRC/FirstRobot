@@ -27,6 +27,7 @@ public class PneumaticDown extends InstantCommand {
   @Override
   public void initialize() {
     pneumatics.Down();
+    pneumatics.Off();
   }
 }
 
