@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -33,17 +32,21 @@ public class RobotContainer {
   private final PneumaticsSubsystem m_PneumaticsSubsystem = new PneumaticsSubsystem();
   private final PowerDistributionPanel pdp = new PowerDistributionPanel();
   
-
+  
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
+    
+    
     configureButtonBindings();
 
     m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
     () -> (-Constants.m_stick.getY()* 0.8), //remove 0.7 value
     () -> (Constants.m_stick.getZ()*0.6)));
+
+    SmartDashboard.putData(pdp);
   }
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
@@ -71,7 +74,7 @@ public class RobotContainer {
     LB2.whenPressed(new PneumaticDown(m_PneumaticsSubsystem));
   }
 
-
+  
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
