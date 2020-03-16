@@ -38,7 +38,7 @@ public class servoUp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drive.aim(aim);
+    //drive.aim(aim);
   }
 
   // Called once the command ends or is interrupted.
