@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.*;
-import frc.robot.subsystems.DriveSubsystem;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -21,19 +19,17 @@ import frc.robot.subsystems.DriveSubsystem;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final Joystick m_stick = new Joystick(0);
-    public static final Joystick m_stick2 = new Joystick(1);
-    public static final SpeedController m_frontLeft = new PWMVictorSPX(0);
-    public static final SpeedController m_rearLeft = new PWMVictorSPX(1);
-    public static final SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+    public static final int m_stick = 0;
+    public static final int m_stick2 = 1;
+    public static final int m_frontLeft = 0;
+    public static final int m_rearLeft = 1;
+    
+    public static final int m_frontRight = 3;
+    public static final int m_rearRight = 2;
+    
+    public static final int m_shooter = 4;
+    public static final int m_scooper = 5;
 
-    public static final SpeedController m_frontRight = new PWMVictorSPX(3);
-    public static final SpeedController m_rearRight = new PWMVictorSPX(2);
-    public static final SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
-    public static final PWMVictorSPX m_shooter = new PWMVictorSPX(4);
-    public static final SpeedController m_scooper = new PWMVictorSPX(5);
-
-    public static final Servo m_aim = new Servo(6);
-    public static final DriveSubsystem drive = new DriveSubsystem();
-    public static final DoubleSolenoid m_solenoid = new DoubleSolenoid(0, 1);
+    public static final int m_solenoid1 = 0;
+    public static final int m_solenoid2 = 1;
 }

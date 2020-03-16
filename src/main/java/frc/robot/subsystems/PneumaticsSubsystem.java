@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -15,19 +16,22 @@ public class PneumaticsSubsystem extends SubsystemBase {
   /**
    * Creates a new PneumaticsSubsystem.
    */
-  public PneumaticsSubsystem() {
+  
+  private static final DoubleSolenoid m_solenoid = new DoubleSolenoid(Constants.m_solenoid1, Constants.m_solenoid2);
+  
+   public PneumaticsSubsystem() {
   }
   
   public void Up(){
-    Constants.m_solenoid.set(Value.kForward);
+    m_solenoid.set(Value.kForward);
   }
 
   public void Down(){
-    Constants.m_solenoid.set(Value.kReverse);
+    m_solenoid.set(Value.kReverse);
   } 
 
   public void Off(){
-    Constants.m_solenoid.set(Value.kOff);
+    m_solenoid.set(Value.kOff);
   }
   @Override
   public void periodic() {

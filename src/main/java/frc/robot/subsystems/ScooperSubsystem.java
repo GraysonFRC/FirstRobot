@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -14,11 +16,12 @@ public class ScooperSubsystem extends SubsystemBase {
   /**
    * Creates a new ScooperSubsystem.
    */
+  private static final SpeedController m_scooper = new PWMVictorSPX(Constants.m_scooper);
   public ScooperSubsystem() {
 
   }
   public void scooper(double scooper){
-    Constants.m_scooper.set(scooper);
+    m_scooper.set(scooper);
   }
   @Override
   public void periodic() {

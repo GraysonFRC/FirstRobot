@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -31,7 +32,8 @@ public class RobotContainer {
   private final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
   private final PneumaticsSubsystem m_PneumaticsSubsystem = new PneumaticsSubsystem();
   private final PowerDistributionPanel pdp = new PowerDistributionPanel();
-  
+  final Joystick m_stick = new Joystick(Constants.m_stick);
+  final Joystick m_stick2 = new Joystick(Constants.m_stick2); 
   
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -43,8 +45,8 @@ public class RobotContainer {
     configureButtonBindings();
 
     m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
-    () -> (-Constants.m_stick.getY()* 0.8), //remove 0.7 value
-    () -> (Constants.m_stick.getZ()*0.6)));
+    () -> (-m_stick.getY()* 0.8), //remove 0.7 value
+    () -> (m_stick.getZ()*0.6)));
     
     SmartDashboard.putData(pdp);
   }
@@ -55,13 +57,16 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() { 
-    final JoystickButton A = new JoystickButton(Constants.m_stick2, 2);
-    final JoystickButton B = new JoystickButton(Constants.m_stick2, 3);
-    final JoystickButton X = new JoystickButton(Constants.m_stick2, 1);
-    final JoystickButton R2 = new JoystickButton(Constants.m_stick2, 8);
-    final JoystickButton LB = new JoystickButton(Constants.m_stick, 5);
-    final JoystickButton LB2 = new JoystickButton(Constants.m_stick2, 5);
-    final JoystickButton LT2 = new JoystickButton(Constants.m_stick2, 7);
+    
+
+
+    final JoystickButton A = new JoystickButton(m_stick2, 2);
+    final JoystickButton B = new JoystickButton(m_stick2, 3);
+    final JoystickButton X = new JoystickButton(m_stick2, 1);
+    final JoystickButton R2 = new JoystickButton(m_stick2, 8);
+    final JoystickButton LB = new JoystickButton(m_stick, 5);
+    final JoystickButton LB2 = new JoystickButton(m_stick2, 5);
+    final JoystickButton LT2 = new JoystickButton(m_stick2, 7);
     A.whenHeld(new Shooter(m_ShooterSubsystem, 1.0));
     B.whenHeld(new Scooper(m_ScooperSubsystem, -1.0));
     X.whenHeld(new shootscoop(m_ShooterSubsystem, m_ScooperSubsystem, -1.0, 0.5));
@@ -74,7 +79,6 @@ public class RobotContainer {
     LB2.whenPressed(new PneumaticDown(m_PneumaticsSubsystem));
   }
 
-  
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *

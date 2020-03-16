@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -14,11 +15,13 @@ public class ShooterSubsystem extends SubsystemBase {
   /**
    * Creates a new ShooterSubsystem.
    */
-  public ShooterSubsystem() {
+  
+  private static final PWMVictorSPX m_shooter = new PWMVictorSPX(Constants.m_shooter);
+   public ShooterSubsystem() {
 
   }
   public void shoot(double speed){
-    Constants.m_shooter.set(speed);
+    m_shooter.set(speed);
   }
   @Override
   public void periodic() {
