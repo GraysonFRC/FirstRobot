@@ -11,7 +11,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * Command that should tilt the servo motor to modify the angle to shoot out at.
  */
 public class servoUp extends CommandBase {
   private final DriveSubsystem drive;

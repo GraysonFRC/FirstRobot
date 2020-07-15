@@ -17,14 +17,14 @@ public class shootscoop extends ParallelCommandGroup {
   /**
    * Creates a new shootscoop.
    */
-  public shootscoop(ShooterSubsystem drive, ScooperSubsystem scoop,double scoops, double speed) {
+  public shootscoop(ShooterSubsystem drive, ScooperSubsystem subsystem,double scoops, double speed) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());super();
 
     super(
       new Shooter(drive, speed),
 
-      new Scooper(scoop, scoops)
+      new Scooper(subsystem, scoops)
 
 
 
