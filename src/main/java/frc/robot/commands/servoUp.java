@@ -7,27 +7,27 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ServoSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
  * Command that should tilt the servo motor to modify the angle to shoot out at.
  */
 public class servoUp extends CommandBase {
-  private final DriveSubsystem drive;
+  private final ServoSubsystem servo;
   private final double aim;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new servoUp
    *
    * @param subsystem The subsystem used by this command.
    */
-  public servoUp(DriveSubsystem drive, double aim) {
-    this.drive = drive;
+  public servoUp(ServoSubsystem servo, double aim) {
+    this.servo = servo;
     this.aim = aim;
 
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(drive);
+    addRequirements(servo);
   }
 
   // Called when the command is initially scheduled.
@@ -38,7 +38,7 @@ public class servoUp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //drive.aim(aim);
+    servo.aim(aim);
   }
 
   // Called once the command ends or is interrupted.
