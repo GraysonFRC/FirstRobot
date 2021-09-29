@@ -29,7 +29,7 @@ public class RobotContainer {
   private final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
   private final PneumaticsSubsystem m_PneumaticsSubsystem = new PneumaticsSubsystem();
   private final PowerDistributionPanel pdp = new PowerDistributionPanel();
-  final Joystick m_stick = new Joystick(Constants.m_stick);
+  final Joystick m_joystick = new Joystick(Constants.m_joystick);
   final Joystick m_stick2 = new Joystick(Constants.m_stick2); 
   
   /**
@@ -42,8 +42,8 @@ public class RobotContainer {
     configureButtonBindings();
 
     m_DriveSubsystem.setDefaultCommand(new TeleOpDrive(m_DriveSubsystem,
-    () -> (-m_stick.getY()* 0.8), //remove 0.7 value
-    () -> (m_stick.getZ()*0.6)));
+    () -> (-m_joystick.getY()* 0.8), //remove 0.7 value
+    () -> (m_joystick.getZ()*0.6)));
     
     SmartDashboard.putData(pdp);
   }
@@ -61,7 +61,7 @@ public class RobotContainer {
     final JoystickButton B = new JoystickButton(m_stick2, 3);
     final JoystickButton X = new JoystickButton(m_stick2, 1);
     final JoystickButton R2 = new JoystickButton(m_stick2, 8);
-    final JoystickButton LB = new JoystickButton(m_stick, 5);
+    final JoystickButton LB = new JoystickButton(m_joystick, 5);
     final JoystickButton LB2 = new JoystickButton(m_stick2, 5);
     final JoystickButton LT2 = new JoystickButton(m_stick2, 7);
     A.whenHeld(new Shooter(m_ShooterSubsystem, 1.0));

@@ -19,7 +19,7 @@ package frc.robot;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final int m_stick = 0;
+    public static final int m_joystick = 0;
     public static final int m_stick2 = 1;
     
     public static final int m_frontLeft = 0;
