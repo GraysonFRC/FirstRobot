@@ -22,13 +22,11 @@ public final class Constants {
     public static final int m_joystick = 0;
     public static final int m_stick2 = 1;
     
-    public static final int m_frontLeft = 0;
-    public static final int m_rearLeft = 1;
+    public static final int m_left = 1;
     
-    public static final int m_frontRight = 3;
-    public static final int m_rearRight = 2;
+    public static final int m_right = 0;
     
-    public static final int m_shooter = 4;
+    public static final int m_shooter = 2;
     public static final int m_scooper = 5;
 
     public static final int m_solenoid1 = 0;
